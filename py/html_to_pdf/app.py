@@ -13,20 +13,24 @@ def get_name():
     return f'export-{datetime.today().strftime("%Y-%m-%d__ %H-%M-%S")}'
 
 
+options = {
+    '--debug-javascript': None,
+    'debug': None,
+}
+
+
 @app.route('/convert', methods=['GET', 'POST'])
 def convert():
     if request.method == 'GET':
         url = request.args.get('url')
 
-        file_name = f'/app/pdfs/{get_name()}.pdf'
+        # file_name = f'/app/pdfs/{get_name()}.pdf'
+        file_name = f'./pdfs/{get_name()}.pdf'
 
         pdfkit.from_url(
             url,
-            file_name,
-            configuration=config,
-            options={
-                'javascript-delay': '15000'
-            })
+            file_name
+        )
 
         return send_file(file_name, attachment_filename="certificate.pdf")
 
