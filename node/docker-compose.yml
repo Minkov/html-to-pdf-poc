@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  html_to_pdf:
+    build: .
+    image: html_to_pdf
+    ports:
+      - "8080:8080"
+    container_name: htp1
+    restart: on-failure

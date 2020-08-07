@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  py3_html_to_pdf:
+    build: .
+    image: py3_html_to_pdf
+    ports:
+      - "5000:5000"
+    container_name: pyhtp1
+    restart: on-failure
+    volumes:
+      - ./pdfs:/app/pdfs
